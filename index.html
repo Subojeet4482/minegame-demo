@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mines — Play the Demo Game</title>
+<meta name="description" content="A polished, interactive Mines demo with Manual and Auto play controls.">
+<meta property="og:title" content="Mines — Play the Demo Game">
+<meta property="og:description" content="Reveal gems, avoid mines, and test Manual or Auto play in this free demo.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://id-preview--08fe309d-376d-4fc8-803c-0cd82b9f1a3c.lovable.app/mines/mine.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://id-preview--08fe309d-376d-4fc8-803c-0cd82b9f1a3c.lovable.app/mines/mine.png">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app" class="app">
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="logo" aria-label="Mines"><img class="logo-gem" src="gem.png" alt="" width="30" height="30"><span class="logo-text">MINES</span></div>
+      <label class="balance-control"><span>Balance</span><span class="balance-input-wrap"><b>$</b><input id="balance" aria-label="Balance" inputmode="decimal" value="1000.00"></span></label>
+    </div>
+  </header>
+
+  <div class="page">
+    <section class="game-board-panel" aria-label="Mines game board">
+      <div class="board-top">
+        <div><p class="mini-label">Multiplier</p><strong class="big text-gem" id="mult">1.00×</strong></div>
+        <div class="text-right"><p class="mini-label">Potential win</p><strong class="big" id="potential">$0.00</strong></div>
+      </div>
+      <div class="tile-grid" id="grid"></div>
+      <div id="resultPop"></div>
+    </section>
+
+    <section class="control-panel">
+      <div class="status-line"><span class="status-dot" id="dot"></span><span id="msg"></span></div>
+      <button type="button" class="primary-action" id="primary">Bet</button>
+
+      <div class="field-group">
+        <div class="field-label"><label for="bet">Bet Amount</label><span id="betLabel">$0.00</span></div>
+        <div class="money-row"><span>$</span><input id="bet" inputmode="decimal" value="0.00"><button type="button" id="half">½</button><button type="button" id="double">2×</button></div>
+      </div>
+
+      <button type="button" class="secondary-action" id="randomPick"><span data-icon="sparkles"></span> Random Pick</button>
+      <button type="button" class="secondary-action" id="clearPicks"><span data-icon="rotate"></span> <span id="clearText">Clear Picks (0)</span></button>
+
+      <div class="two-column-fields">
+        <div class="field-group"><label class="field-title" for="mines">Mines</label><div class="select-wrap"><select id="mines"></select><span data-icon="chevron" data-size="20"></span></div></div>
+        <div class="field-group"><label class="field-title" for="gems">Gems</label><input id="gems" class="text-field" value="22" readonly></div>
+      </div>
+
+      <div class="field-group" id="manualProfit">
+        <div class="field-label"><span id="profitTitle">Total Profit (1.00×)</span><span id="profitLabel">$0.00</span></div>
+        <div class="money-row money-row--readonly"><span>$</span><input id="profitInput" value="0.00" readonly></div>
+      </div>
+
+      <div class="auto-settings" id="autoSettings">
+        <div class="field-group"><label class="field-title" for="bets">Number of Bets</label><div class="icon-field"><input id="bets" inputmode="numeric" value="0"><span data-icon="infinity" data-size="20"></span></div></div>
+        <label class="switch-row"><span>Advanced</span><input type="checkbox" id="advanced"><i></i></label>
+        <div class="advanced-grid" id="advancedGrid"></div>
+        <div class="session-stats" id="sessionStats"><span>Rounds <b id="rounds">0</b></span><span>Session <b id="session">+$0.00</b></span></div>
+      </div>
+
+      <div class="mode-tabs" role="tablist" aria-label="Bet mode">
+        <button type="button" role="tab" id="tabManual" class="active">Manual</button>
+        <button type="button" role="tab" id="tabAuto">Auto</button>
+      </div>
+    </section>
+
+    <section class="control-panel">
+      <button type="button" class="secondary-action" id="settingsBtn" aria-expanded="false"><span data-icon="settings"></span> Settings <span id="settingsChev" data-icon="chevron"></span></button>
+      <div class="auto-settings" id="settingsBody" hidden>
+        <label class="switch-row"><span>Animations</span><input type="checkbox" id="animations" checked><i></i></label>
+        <label class="switch-row"><span>Instant Bet</span><input type="checkbox" id="instant"><i></i></label>
+        <div class="field-group"><div class="field-label"><label for="volume"><span data-icon="volume" data-size="14" class="inline"></span> Sound</label><span id="volLabel">70%</span></div><input id="volume" type="range" min="0" max="100" value="70" class="range"></div>
+      </div>
+    </section>
+  </div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
